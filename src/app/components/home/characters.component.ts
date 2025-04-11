@@ -3,11 +3,11 @@ import { CharactersService } from '../../services/characters.service';
 import { Character, CharacterRes } from '../common/models/character.model';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+  selector: 'app-characters',
+  templateUrl: './characters.component.html',
+  styleUrl: './characters.component.css',
 })
-export class HomeComponent implements OnInit {
+export class CharactersComponent implements OnInit {
   constructor(private characterService: CharactersService) {}
 
   characters?: Character[] = [];
