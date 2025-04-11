@@ -1,1 +1,23 @@
-<p>single-character works!</p>
+<div class="wrapper">
+  <div class="character-detail" *ngIf="character">
+    <div class="character-image-wrapper">
+      <img class="character-image" [src]="character.image" alt="Character Name"/>
+    </div>
+    <div class="character-info">
+      <h2 class="character-name">{{ character.name }}</h2>
+      <p><strong>Status:</strong> {{ character.status }}</p>
+      <p><strong>Species:</strong> {{ character.species }}</p>
+      <p><strong>Gender:</strong> {{ character.gender }}</p>
+      <p><strong>Type:</strong> {{ character.type || " N/A " }}</p>
+      <p><strong>Location:</strong> {{ character.location.name }}</p>
+    </div>
+  </div>
+  <div class="episodes-wrapper">
+    <div class="episodes">Episodes</div>
+    <div class="episodes-list">
+      <div class="episode" *ngFor="let episode of episodes">
+        {{ episode }}
+      </div>
+    </div>
+  </div>
+</div>

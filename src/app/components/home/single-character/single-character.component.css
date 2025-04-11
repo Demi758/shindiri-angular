@@ -1,0 +1,94 @@
+.character-detail {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  background-color: #f4f4f9;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.character-image-wrapper {
+  flex: 1 1 300px;
+  text-align: center;
+}
+
+.character-image {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 12px;
+}
+
+.character-info {
+  flex: 2 1 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.character-name {
+  margin: 0;
+  font-size: 2rem;
+  color: #222;
+}
+
+.character-info p {
+  margin: 0;
+  font-size: 1rem;
+  color: #444;
+}
+
+.character-link {
+  margin-top: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #3b82f6;
+}
+
+.character-link:hover {
+  text-decoration: underline;
+}
+
+.episodes {
+  margin-left: 2rem;
+  font-size: 21px;
+}
+
+.episodes-list {
+  margin-top: 15px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.episode {
+  background-color: #ffffff;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.episode:hover {
+  background-color: #e0f7fa;
+  cursor: pointer;
+}
+
+.episode:not(:last-child) {
+  border-bottom: 1px solid #ddd;
+}
