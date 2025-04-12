@@ -41,4 +41,8 @@ export class SingleCharacterComponent implements OnInit {
     const loc = this.character.location.apiUrl.split('/');
     this.router.navigateByUrl('location/' + loc[loc.length - 1]);
   }
+
+  openEpisode(id: number) {
+    this.router.navigateByUrl('episode/' + id);
+  }
 }

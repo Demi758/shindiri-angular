@@ -15,7 +15,7 @@
   <div class="episodes-wrapper">
     <div class="episodes">Episodes</div>
     <div class="episodes-list">
-      <div class="episode" *ngFor="let episode of episodes">
+      <div class="episode" *ngFor="let episode of episodes" (click)="openEpisode(episode)">
         {{ episode }}
       </div>
     </div>

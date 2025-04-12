@@ -1,0 +1,21 @@
+<div class="episode-wrapper" *ngIf="episode">
+    <div class="episode-card">
+      <div class="episode-info">
+        <h2 class="episode-name">{{ episode.name }}</h2>
+        <p><strong>Air Date:</strong> {{ episode.airDate || "N/A" }}</p>
+        <p><strong>Episode:</strong> {{ episode.episode || "Unknown" }}</p>
+        <h3>Characters in the episode</h3>
+      </div>
+      
+      <div class="characters-section" *ngIf="episode.characters?.length">
+        <div class="character-list">
+          <div *ngFor="let character of characters" class="character">
+            <app-character-card
+              [character]="character"
+              (click)="openCharacter(character.id)"
+            ></app-character-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
