@@ -1,0 +1,26 @@
+<div class="login-wrapper">
+  <div class="login-card">
+    <h2>Login</h2>
+    <form (ngSubmit)="loginUser()" #loginForm="ngForm">
+      <input
+        type="email"
+        placeholder="Email"
+        name="email"
+        [(ngModel)]="email"
+        required
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        name="password"
+        [(ngModel)]="password"
+        required
+      />
+      <button type="submit" [disabled]="!loginForm.valid">Log In</button>
+      <p class="error" *ngIf="error">{{ error }}</p>
+    </form>
+    <p class="note">
+      Don't have an account? <a class="pointer" (click)="goToRegister()">Register</a>
+    </p>
+  </div>
+</div>

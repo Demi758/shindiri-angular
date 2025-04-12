@@ -2,8 +2,8 @@
   <div class="left-side">
     <h2 class="pointer" routerLink="characters">Rick & Morty</h2>
   </div>
-  <div class="button-wrapper">
+  <div class="button-wrapper" *ngIf="isLoggedIn">
     <button routerLink="characters">CHARACTERS</button>
-    <button>LOGOUT</button>
+    <button (click)="logout()" >LOGOUT</button>
   </div>
 </div>
