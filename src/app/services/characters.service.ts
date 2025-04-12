@@ -16,4 +16,8 @@ export class CharactersService {
   getCharacter(id: number): Observable<Character>{
     return this.http.get<Character>("https://rickandmortyapi.com/api/character/" + id);
   }
+
+  getMultipleCharacters(ids: number[]): Observable<Character[]> {
+    return this.http.get<Character[]>("https://rickandmortyapi.com/api/character/" + ids);
+  }
 }

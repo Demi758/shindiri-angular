@@ -16,6 +16,9 @@ import { CharactersRoutingModule } from './characters-routing-module';
   imports: [
     CommonModule,
     CharactersRoutingModule
+  ],
+  exports: [
+    CharacterCardComponent
   ]
 })
 export class CharactersModule { }

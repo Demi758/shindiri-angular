@@ -1,0 +1,21 @@
+<div class="location-wrapper" *ngIf="location">
+  <div class="location-card">
+    <div class="location-info">
+      <h2 class="location-name">{{ location.name }}</h2>
+      <p><strong>Type:</strong> {{ location.type || "N/A" }}</p>
+      <p><strong>Dimension:</strong> {{ location.dimension || "Unknown" }}</p>
+      <h3>Residents</h3>
+    </div>
+    
+    <div class="residents-section" *ngIf="location.residents?.length">
+      <div class="character-list">
+        <div *ngFor="let resident of characters" class="character">
+          <app-character-card
+            [character]="resident"
+            (click)="openCharacter(resident.id)"
+          ></app-character-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

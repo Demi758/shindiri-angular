@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CharactersService } from '../../../services/characters.service';
 import { Character } from '../../common/models/character.model';
 
@@ -9,7 +9,7 @@ import { Character } from '../../common/models/character.model';
   styleUrl: './single-character.component.css'
 })
 export class SingleCharacterComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private characterService: CharactersService) {}
+  constructor(private route: ActivatedRoute, private characterService: CharactersService, private router: Router) {}
 
   id!: number;
   character!: Character;
@@ -32,9 +32,13 @@ export class SingleCharacterComponent implements OnInit {
         {
           const ep = episode.split('/');
           this.episodes.push(+ep[ep.length - 1]);
-          console.log(this.episodes);
         }
       }
     })
+  }
+  
+  openLocation() {
+    const loc = this.character.location.apiUrl.split('/');
+    this.router.navigateByUrl('location/' + loc[loc.length - 1]);
   }
 }

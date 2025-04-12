@@ -92,3 +92,8 @@
 .episode:not(:last-child) {
   border-bottom: 1px solid #ddd;
 }
+
+.pointer {
+  color: #007bff;
+  cursor: pointer;
+}

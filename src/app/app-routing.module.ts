@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CharactersComponent } from './components/home/characters.component';
+import { LocationComponent } from './components/location/location.component';
 
 const routes: Routes = [
   {
@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'characters',
     loadChildren: () => import("./components/home/characters.module").then((m) => m.CharactersModule),
+  },
+  {
+    path: 'location/:id',
+    component: LocationComponent
   }
 ];
 

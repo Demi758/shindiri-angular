@@ -9,7 +9,7 @@
       <p><strong>Species:</strong> {{ character.species }}</p>
       <p><strong>Gender:</strong> {{ character.gender }}</p>
       <p><strong>Type:</strong> {{ character.type || " N/A " }}</p>
-      <p><strong>Location:</strong> {{ character.location.name }}</p>
+      <a (click)="openLocation()"><strong>Location:</strong> <label class="pointer"> {{ character.location.name }} </label></a>
     </div>
   </div>
   <div class="episodes-wrapper">

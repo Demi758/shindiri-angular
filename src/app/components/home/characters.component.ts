@@ -18,6 +18,7 @@ export class CharactersComponent implements OnInit {
       next: (res: CharacterRes) => {
         const resCharacters = res.results;
         this.characters = resCharacters?.map((character: Character) => new Character(character));
+        console.log(this.characters);
       },
     });
   }
