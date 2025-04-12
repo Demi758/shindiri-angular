@@ -14,12 +14,11 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
-    // Check if the user is logged in (i.e., token exists in localStorage)
     if (this.authService.isLoggedIn()) {
-      return of(true); // If logged in, allow access
+      return of(true);
     } else {
-      this.router.navigate(['/login']); // Otherwise, redirect to login
-      return of(false); // Prevent navigation
+      this.router.navigate(['/login']); 
+      return of(false); 
     }
   }
 }

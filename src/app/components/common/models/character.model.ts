@@ -34,4 +34,12 @@ export enum ECharacterStatus {
 
 export class CharacterRes {
     results?: Character[];
+    info?: IInfo;
+}
+
+interface IInfo {
+    count: number;
+    next?: string;
+    pages: number;
+    prev?: number;
 }

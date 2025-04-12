@@ -4,6 +4,7 @@
             <div class="character" *ngFor="let character of characters">
                 <app-character-card [character] = "character" (click)="openCharacter(character.id)"></app-character-card>
             </div>
+            <div class="lastCharacter" #lastCharacter></div>
         </div>
     </div>
 </div>

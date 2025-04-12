@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CharactersService } from '../../services/characters.service';
 import { Character, CharacterRes } from '../common/models/character.model';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-characters',
@@ -11,15 +12,45 @@ import { Router } from '@angular/router';
 export class CharactersComponent implements OnInit {
   constructor(private characterService: CharactersService, private router: Router) {}
 
-  characters?: Character[] = [];
+  @ViewChild('lastCharacter') lastCharacter?: ElementRef;
+  shouldFetchCharacters$ = new Subject<boolean>();
+  characters: Character[] = [];
+  page: number = 1;
+  intersectionObserver!: IntersectionObserver;
+  reachedLast: boolean = false;
 
   ngOnInit() {
-    this.characterService.getCharacters().subscribe({
-      next: (res: CharacterRes) => {
-        const resCharacters = res.results;
-        this.characters = resCharacters?.map((character: Character) => new Character(character));
-      },
+    this.shouldFetchCharacters$.subscribe(() => {
+      this.characterService.getCharacters(this.page).subscribe({
+        next: (res: CharacterRes) => {
+          const resCharacters = res.results;
+          const resInfo = res.info;
+          for(let character of resCharacters!) {
+            this.characters.push(new Character(character));
+          }
+          this.reachedLast = resInfo?.count! <= this.characters.length;
+        },
+      });
+    })
+    this.shouldFetchCharacters$.next(true);
+  }
+
+  ngAfterViewInit() {
+    this.intersectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.8 && !this.reachedLast) {
+          this.page++;
+          this.shouldFetchCharacters$.next(true);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.7
     });
+
+    if (this.lastCharacter) {
+      this.intersectionObserver.observe(this.lastCharacter.nativeElement);
+    }
   }
 
   openCharacter(id: number) {

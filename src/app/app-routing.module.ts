@@ -19,11 +19,13 @@ const routes: Routes = [
   },
   {
     path: 'location/:id',
-    component: LocationComponent
+    component: LocationComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'episode/:id',
-    component: EpisodeComponent
+    component: EpisodeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',

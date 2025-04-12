@@ -10,7 +10,7 @@ export class CharactersService {
   constructor(private http: HttpClient) { }
 
   getCharacters(page?: number): Observable<CharacterRes>{
-    return this.http.get<CharacterRes>("https://rickandmortyapi.com/api/character");
+    return this.http.get<CharacterRes>("https://rickandmortyapi.com/api/character/?page=" + page);
   }
 
   getCharacter(id: number): Observable<Character>{
