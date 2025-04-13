@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
   email: string = '';
@@ -18,17 +18,18 @@ export class RegisterComponent {
 
   registerUser() {
     if (this.password !== this.confirmPassword) {
-      this.error = "Passwords do not match";
+      this.error = 'Passwords do not match';
       return;
     }
 
-    this.authService.registerUser(this.email, this.password)
+    this.authService
+      .registerUser(this.email, this.password)
       .then(() => {
         this.success = 'Successfully registered!';
         this.error = '';
         this.router.navigateByUrl('login');
       })
-      .catch(err => {
+      .catch((err) => {
         this.error = err.message;
         this.success = '';
       });

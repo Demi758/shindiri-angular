@@ -1,23 +1,32 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Character, CharacterRes } from '../components/common/models/character.model';
+import {
+  Character,
+  CharacterRes,
+} from '../components/common/models/character.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CharactersService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getCharacters(page?: number): Observable<CharacterRes>{
-    return this.http.get<CharacterRes>("https://rickandmortyapi.com/api/character/?page=" + page);
+  getCharacters(page?: number): Observable<CharacterRes> {
+    return this.http.get<CharacterRes>(
+      'https://rickandmortyapi.com/api/character/?page=' + page
+    );
   }
 
-  getCharacter(id: number): Observable<Character>{
-    return this.http.get<Character>("https://rickandmortyapi.com/api/character/" + id);
+  getCharacter(id: number): Observable<Character> {
+    return this.http.get<Character>(
+      'https://rickandmortyapi.com/api/character/' + id
+    );
   }
 
   getMultipleCharacters(ids: number[]): Observable<Character[]> {
-    return this.http.get<Character[]>("https://rickandmortyapi.com/api/character/" + ids);
+    return this.http.get<Character[]>(
+      'https://rickandmortyapi.com/api/character/' + ids
+    );
   }
 }

@@ -10,35 +10,38 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'characters',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'characters',
-    loadChildren: () => import("./components/home/characters.module").then((m) => m.CharactersModule),
-    canActivate: [AuthGuard]
+    loadChildren: () =>
+      import('./components/home/characters.module').then(
+        (m) => m.CharactersModule
+      ),
+    canActivate: [AuthGuard],
   },
   {
     path: 'location/:id',
     component: LocationComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'episode/:id',
     component: EpisodeComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'register',
-    component: RegisterComponent
-  }
+    component: RegisterComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

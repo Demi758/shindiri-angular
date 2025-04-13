@@ -10,7 +10,10 @@ import { Subject } from 'rxjs';
   styleUrl: './characters.component.css',
 })
 export class CharactersComponent implements OnInit {
-  constructor(private characterService: CharactersService, private router: Router) {}
+  constructor(
+    private characterService: CharactersService,
+    private router: Router
+  ) {}
 
   @ViewChild('lastCharacter') lastCharacter?: ElementRef;
   shouldFetchCharacters$ = new Subject<boolean>();
@@ -25,28 +28,35 @@ export class CharactersComponent implements OnInit {
         next: (res: CharacterRes) => {
           const resCharacters = res.results;
           const resInfo = res.info;
-          for(let character of resCharacters!) {
+          for (let character of resCharacters!) {
             this.characters.push(new Character(character));
           }
           this.reachedLast = resInfo?.count! <= this.characters.length;
         },
       });
-    })
+    });
     this.shouldFetchCharacters$.next(true);
   }
 
   ngAfterViewInit() {
-    this.intersectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && entry.intersectionRatio > 0.8 && !this.reachedLast) {
-          this.page++;
-          this.shouldFetchCharacters$.next(true);
-        }
-      });
-    }, {
-      root: null,
-      threshold: 0.7
-    });
+    this.intersectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (
+            entry.isIntersecting &&
+            entry.intersectionRatio > 0.8 &&
+            !this.reachedLast
+          ) {
+            this.page++;
+            this.shouldFetchCharacters$.next(true);
+          }
+        });
+      },
+      {
+        root: null,
+        threshold: 0.7,
+      }
+    );
 
     if (this.lastCharacter) {
       this.intersectionObserver.observe(this.lastCharacter.nativeElement);

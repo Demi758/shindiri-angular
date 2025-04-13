@@ -1,7 +1,11 @@
 <div class="wrapper">
   <div class="character-detail" *ngIf="character">
     <div class="character-image-wrapper">
-      <img class="character-image" [src]="character.image" alt="Character Name"/>
+      <img
+        class="character-image"
+        [src]="character.image"
+        alt="Character Name"
+      />
     </div>
     <div class="character-info">
       <h2 class="character-name">{{ character.name }}</h2>
@@ -9,13 +13,20 @@
       <p><strong>Species:</strong> {{ character.species }}</p>
       <p><strong>Gender:</strong> {{ character.gender }}</p>
       <p><strong>Type:</strong> {{ character.type || " N/A " }}</p>
-      <a (click)="openLocation()"><strong>Location:</strong> <label class="pointer"> {{ character.location.name }} </label></a>
+      <a (click)="openLocation()"
+        ><strong>Location:</strong>
+        <label class="pointer"> {{ character.location.name }} </label></a
+      >
     </div>
   </div>
   <div class="episodes-wrapper">
     <div class="episodes">Episodes</div>
     <div class="episodes-list">
-      <div class="episode" *ngFor="let episode of episodes" (click)="openEpisode(episode)">
+      <div
+        class="episode"
+        *ngFor="let episode of episodes"
+        (click)="openEpisode(episode)"
+      >
         {{ episode }}
       </div>
     </div>

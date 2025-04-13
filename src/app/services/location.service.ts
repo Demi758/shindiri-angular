@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { CharacterLocation } from '../components/common/models/character-location.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LocationService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  getLocation(id: number): Observable<CharacterLocation>{
-      return this.http.get<CharacterLocation>("https://rickandmortyapi.com/api/location/" + id);
-    }
+  getLocation(id: number): Observable<CharacterLocation> {
+    return this.http.get<CharacterLocation>(
+      'https://rickandmortyapi.com/api/location/' + id
+    );
+  }
 }

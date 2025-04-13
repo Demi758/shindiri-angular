@@ -1,14 +1,12 @@
 .wrapper {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    /* justify-content: center;
-    align-items: center; */
+  width: 100%;
+  height: 100vh;
+  display: flex;
 }
 
 .character-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }

@@ -5,20 +5,13 @@ import { CharacterCardComponent } from './character-card/character-card.componen
 import { SingleCharacterComponent } from './single-character/single-character.component';
 import { CharactersRoutingModule } from './characters-routing-module';
 
-
-
 @NgModule({
   declarations: [
     CharactersComponent,
     CharacterCardComponent,
-    SingleCharacterComponent
+    SingleCharacterComponent,
   ],
-  imports: [
-    CommonModule,
-    CharactersRoutingModule
-  ],
-  exports: [
-    CharacterCardComponent
-  ]
+  imports: [CommonModule, CharactersRoutingModule],
+  exports: [CharacterCardComponent],
 })
-export class CharactersModule { }
+export class CharactersModule {}
