@@ -85,3 +85,8 @@
 .pointer {
   cursor: pointer;
 }
+
+.button-disabled {
+  opacity: 50%;
+  cursor: not-allowed !important;
+}

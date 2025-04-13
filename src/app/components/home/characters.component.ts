@@ -15,7 +15,7 @@ export class CharactersComponent implements OnInit {
     private router: Router
   ) {}
 
-  @ViewChild('lastCharacter') lastCharacter?: ElementRef;
+  @ViewChild('lastCharacter') lastCharacter!: ElementRef;
   shouldFetchCharacters$ = new Subject<boolean>();
   characters: Character[] = [];
   page: number = 1;
@@ -44,23 +44,16 @@ export class CharactersComponent implements OnInit {
         entries.forEach((entry) => {
           if (
             entry.isIntersecting &&
-            entry.intersectionRatio > 0.8 &&
             !this.reachedLast
           ) {
             this.page++;
             this.shouldFetchCharacters$.next(true);
           }
         });
-      },
-      {
-        root: null,
-        threshold: 0.7,
       }
     );
 
-    if (this.lastCharacter) {
-      this.intersectionObserver.observe(this.lastCharacter.nativeElement);
-    }
+    this.intersectionObserver.observe(this.lastCharacter.nativeElement);
   }
 
   openCharacter(id: number) {

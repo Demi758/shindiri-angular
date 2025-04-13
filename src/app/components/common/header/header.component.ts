@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
+  isLoggedIn: boolean = false;
+
   ngOnInit() {
     this.router.events.subscribe(() => {
       const url = this.router.url;
@@ -20,8 +22,6 @@ export class HeaderComponent {
       }
     });
   }
-
-  isLoggedIn: boolean = false;
 
   logout() {
     return this.authService.logout();

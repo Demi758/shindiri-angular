@@ -16,7 +16,7 @@
         [(ngModel)]="password"
         required
       />
-      <button type="submit" [disabled]="!loginForm.valid">Log In</button>
+      <button type="submit" [ngClass]="{ 'button-disabled': !loginForm.valid }" [disabled]="!loginForm.valid">Log In</button>
       <p class="error" *ngIf="error">{{ error }}</p>
     </form>
     <p class="note">

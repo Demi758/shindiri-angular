@@ -12,7 +12,6 @@ export class RegisterComponent {
   password: string = '';
   confirmPassword: string = '';
   error: string = '';
-  success: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -25,13 +24,12 @@ export class RegisterComponent {
     this.authService
       .registerUser(this.email, this.password)
       .then(() => {
-        this.success = 'Successfully registered!';
+
         this.error = '';
-        this.router.navigateByUrl('login');
+        this.goToLogin();
       })
       .catch((err) => {
         this.error = err.message;
-        this.success = '';
       });
   }
 

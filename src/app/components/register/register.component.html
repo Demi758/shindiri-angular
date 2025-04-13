@@ -23,9 +23,8 @@
         [(ngModel)]="confirmPassword"
         required
       />
-      <button type="submit" [disabled]="!registerForm.valid">Register</button>
+      <button type="submit" [ngClass]="{ 'button-disabled': !registerForm.valid }" [disabled]="!registerForm.valid">Register</button>
       <p class="error" *ngIf="error">{{ error }}</p>
-      <p class="success" *ngIf="success">{{ success }}</p>
     </form>
     <p class="note">
       Already have an account?
